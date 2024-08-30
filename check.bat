@@ -33,7 +33,7 @@ for /f "skip=1 delims=" %%a in ('wmic nicconfig where "IPEnabled=true" get MACAd
 for /f "tokens=2 delims==" %%j in ('wmic cpu get SerialNumber /value ^| find "="') do set cpu=%%j
 echo Serials Retrived
 echo.
-set "JSON_PAYLOAD={\"embeds\": [{\"title\": \"Phantom Solutions HWID Checker\", \"color\": 7419530, \"description\": \"**UUID:** \n ```%uuid%``` \n **BIOS Serial Number:** \n ```%bios%``` \n **Chassis Serial Number:** \n ```%chassis%``` \n **Baseboard Serial Number:** \n ```%baseboard%```  \n **CPU Serial Number:** \n ```%cpu%``` \n **Mac Address:** \n ```%mac%```\"}]}"
+set "JSON_PAYLOAD={\"embeds\": [{\"title\": \"Phantom Solutions HWID Checker\", \"color\": 13085430, \"description\": \"**UUID:** \n ```%uuid%``` \n **BIOS Serial Number:** \n ```%bios%``` \n **Chassis Serial Number:** \n ```%chassis%``` \n **Baseboard Serial Number:** \n ```%baseboard%```  \n **CPU Serial Number:** \n ```%cpu%``` \n **Mac Address:** \n ```%mac%```\"}]}"
 echo Sending to Webhook
 powershell -Command "Invoke-RestMethod -Uri '%WEBHOOK_URL%' -Method Post -ContentType 'application/json' -Body '%JSON_PAYLOAD%'"
 echo Serials Sent to Webhook
